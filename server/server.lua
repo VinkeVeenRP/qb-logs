@@ -1,5 +1,5 @@
 QBCore = nil
-TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
+local QBCore = exports['qb-core']:GetCoreObject()
 
 
 RegisterServerEvent('qb-log:server:CreateLog')
