@@ -4,12 +4,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterServerEvent('qb-log:server:CreateLog')
 AddEventHandler('qb-log:server:CreateLog', function(name, title, color, message, tagEveryone)
-	local Player = QBCore.Functions.GetPlayer(source)
-	print(source)
-	print(Player)
-	local playerid = Player.PlayerData.citizenid
     local EventID = Config.EventID[name] ~= nil and Config.EventID[name] or Config.EventID["default"]
-    MySQL.insert('INSERT INTO logs (EventID, Player, Title, Event) VALUES (?, ?, ?)',{EventID, playerid, title, message})
+    MySQL.insert('INSERT INTO logs (EventID, Title, Event) VALUES (?, ?, ?)',{EventID, title, message})
     Citizen.Wait(100)
 
 end)
